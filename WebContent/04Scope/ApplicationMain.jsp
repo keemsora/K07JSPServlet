@@ -75,7 +75,7 @@ request.setAttribute("requestMember", first);
 	<h3>포워드로 페이지 전달하기</h3>
 	<%
 		request.getRequestDispatcher("ApplicationResult.jsp")
-			.forward(request, response);
+			.forward(request, response);//설정된 Dispatcher로 요청과 응답 권한을 넘김
 	%>
 	
 	<!-- 외부파일 인클루드 : include지시어를 통해 페이지를 삽입하면
