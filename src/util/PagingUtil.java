@@ -60,5 +60,100 @@ public class PagingUtil {
 		}
 		return pagingStr;
 	}
+	
+	public static String pagingImg(int totalRecordCount,
+			int pageSize, int blockPage, int nowPage, String pageName) {
+		
+		String pagingStr = "";
+
+		int totalPage =	(int)(Math.ceil(((double)totalRecordCount/pageSize)));
+		
+		int intTemp = (((nowPage-1) / blockPage) * blockPage) + 1;
+		
+		if(intTemp != 1) {
+			pagingStr += "<a href='"+pageName+"nowPage=1'><img src='../images/paging1.gif'></a>";
+			pagingStr += "&nbsp;";
+			pagingStr += "<a href='"+pageName+"nowPage="+(intTemp-1)+"'><img src='../images/paging2.gif'></a>";
+		}
+
+		int blockCount = 1;
+		while(blockCount<=blockPage && intTemp<=totalPage)
+		{
+			if(intTemp==nowPage) {
+				pagingStr += "&nbsp;"+intTemp+"&nbsp;";
+			}
+			else {
+				pagingStr += "&nbsp;";
+				pagingStr += "<a href='"+pageName+"nowPage="+intTemp+"'>"+intTemp+"</a>";
+				pagingStr += "&nbsp;";
+			}
+			intTemp++;
+			blockCount++;
+		}
+
+		if(intTemp <= totalPage) {
+			pagingStr += "<a href='"+pageName+"nowPage="+intTemp+"'><img src='../images/paging3.gif'></a>";
+			pagingStr += "&nbsp;";
+			//마지막 페이지로 바로가기
+			pagingStr += "<a href='"+pageName+"nowPage="+totalPage+"'><img src='../images/paging4.gif'></a>";
+		}
+
+		return pagingStr;
+	}
+	
+	//페이지 번호를 순수 텍스트로 표현한다.
+	public static String pagingTxt(int totalRecordCount,
+			int pageSize, int blockPage, int nowPage, String pageName) {
+		
+		String pagingStr = "";
+		
+		//전체 페이지 수 계산
+		int totalPage =	(int)(Math.ceil(((double)totalRecordCount/pageSize)));
+		
+		//페이지 블럭 상태를 표현하기 위한 계산식
+		int intTemp = (((nowPage-1) / blockPage) * blockPage) + 1;
+		
+		/*
+		첫 번째 페이지 블럭이라면 이전 블럭이 존재하지 않으므로
+		화면상에 표시하지 않는다. 두 번째 블럭부터 표시한다. 
+		*/
+		if(intTemp != 1) {
+			pagingStr += "<a href='"+pageName+"nowPage=1'>[첫페이지로]</a>";
+			pagingStr += "&nbsp;";
+			pagingStr += "<a href='"+pageName+"nowPage="+(intTemp-1)+"'>[이전블록으로]</a>";
+		}
+
+		int blockCount = 1;
+		//각 페이지 바로가기 - BLOCK_PAGE의 설정값만큼 반복한다.
+		/*
+			BLOCK_PAGE의 설정값만큼 반복하는 것을 기본으로 하지만
+			전체 페이지를 넘어갈 수는 없으므로 남은 페이지만큼만
+			반복하기 위해 두 번째 조건을 추가한다.
+		*/
+		while(blockCount<=blockPage && intTemp<=totalPage)
+		{
+			if(intTemp==nowPage) {
+				//현재 페이지인 경우에는 링크는 제거한다.
+				pagingStr += "&nbsp;"+intTemp+"&nbsp;";
+			}
+			else {
+				//현재 페이지가 아닐 때는 링크가 있어야 한다.
+				pagingStr += "&nbsp;";
+				pagingStr += "<a href='"+pageName+"nowPage="+intTemp+"'>"+intTemp+"</a>";
+				pagingStr += "&nbsp;";
+			}
+			intTemp++;
+			blockCount++;
+		}
+
+		if(intTemp <= totalPage) {
+			pagingStr += "<a href='"+pageName+"nowPage="+intTemp+"'>[다음블록으로]</a>";
+			pagingStr += "&nbsp;";
+			pagingStr += "<a href='"+pageName+"nowPage="+totalPage+"'>[마지막페이지로]</a>";
+		}
+
+		return pagingStr;
+	}
+
 
 }
