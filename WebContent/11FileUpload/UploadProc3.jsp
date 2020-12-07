@@ -123,6 +123,10 @@ try{
    ///////////////////////////////
 }
 catch(Exception e){
+	/*
+		파일업로드 시 예외가 발생하면 request영역에 오류메세지를
+		저장하고, 업로드를 페이지로 포워드한다.
+	*/
    request.setAttribute("errorMessage", "파일업로드오류");
    request.getRequestDispatcher("FileUploadMain.jsp").forward(request, response);
 }

@@ -33,6 +33,7 @@
 	
 	<a href="FileList.jsp">파일목록 바로가기</a>
 	
+	<h3>파일 업로드1 - 원본파일명 그대로 업로드</h3>
 	<form name="fileFrm" method="post" action="UploadProc.jsp"
 		enctype="multipart/form-data"
 		onsubmit="return isValidate(this);">
