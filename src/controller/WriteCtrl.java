@@ -71,9 +71,11 @@ public class WriteCtrl extends HttpServlet{
 			sucOrFail = -1;
 		}
 		if(sucOrFail==1) {
+			//글쓰기 성공 시 리스트로 이동
 			resp.sendRedirect("../DataRoom/DataList");
 		}
 		else {
+			//실패 시 글쓰기 페이지로 이동
 			req.getRequestDispatcher("/14Dataroom/DataWrite.jsp").forward(req, resp);
 		}
 	}////doPost끝
