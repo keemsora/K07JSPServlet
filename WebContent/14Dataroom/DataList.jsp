@@ -80,10 +80,10 @@
 							<c:forEach items="${lists }" var="row" varStatus="loop">
 								<tr align="center">
 									<td class="text-center"><!-- 가상번호 -->
-										${map.totalCount - (((map.nowPatet-1) * map.pageSize)+ loop.index)}
+										${map.totalCount - (((map.nowPage-1) * map.pageSize)+ loop.index)}
 									</td>
 									<td class="text-left">
-										<a href="../DataRoom/DataView?idx=${row.idx }&nowPage=${param.nowPage}">
+										<a href="../DataRoom/DataView?idx=${row.idx }&nowPage=${map.nowPage}&searchColumn=${param.searchColumn}&searchWord=${param.searchWord }">
 											${row.title }
 										</a>
 									</td>
@@ -110,7 +110,7 @@
 						<!-- 각종 버튼 부분 -->
 						<!--  <button type="button" class="btn">Basic</button> -->
 						<button type="button" class="btn btn-primary" 
-							onclick="location.href='../DataRoom/DataWrite';">글쓰기</button>
+							onclick="location.href='../DataRoom/DataWrite?nowPage=${map.nowPage}&searchColumn=${param.searchColumn}&searchWord=${param.searchWord }';">글쓰기</button>
 						<!--  <button type="button" class="btn btn-secondary">수정하기</button>
 						<button type="button" class="btn btn-success">삭제하기</button>
 						<button type="button" class="btn btn-info">답글쓰기</button>
@@ -125,20 +125,9 @@
 					<div class="col">
 						<!-- 페이지번호 부분 -->
 						<ul class="pagination justify-content-center">
-							<!-- 매개변수 설명
-							totalRecordCount : 게시물의 전체 갯수
-							pageSize : 한 페이지에 출력할 게시물의 갯수 
-							blockPage : 한 블록에 표시할 페이지 번호의 갯수
-							nowPage : 현재 페이지 번호
-							"BoardList.jsp?" : 해당 게시판의 실행 파일명
-							-->
+							${map.pagingImg }
 						</ul>
 					</div>
-				</div>
-				<!-- ###게시판의 body부분 end###  -->
-				<%-- 텍스트 기반의 페이지번호 출력하기 --%>
-				<div class="text-center">
-			
 				</div>
 			</div>
 		</div>
