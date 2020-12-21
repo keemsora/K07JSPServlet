@@ -20,7 +20,7 @@ public class SMTPAuth extends Authenticator {
 	@Override
 	protected PasswordAuthentication getPasswordAuthentication() {
 		
-		return new PasswordAuthentication("5284173", "dkdlvls56585658");
+		return new PasswordAuthentication("11111", "1234");
 	}
 	
 	//해당 메소드를 통해 이메일을 발송한다.

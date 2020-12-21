@@ -62,13 +62,13 @@ if(request.getParameter("content")!=null){
 	<tr>	
 		<td> 
 			보내는사람 : 
-			<input type="text" name="from" value="5284173@naver.com" />
+			<input type="text" name="from" value="11111@naver.com" />
 		</td>
 	</tr>
 	<tr>	
 		<td>
 			받는사람 : 
-			<input type="text" name="to" value="ir2ne0@gmail.com" />
+			<input type="text" name="to" value="22222@gmail.com" />
 		</td>
 	</tr>
 	<tr>	
